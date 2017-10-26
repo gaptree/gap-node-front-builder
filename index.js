@@ -35,6 +35,7 @@ module.exports = (opts) => {
         'gap': 'gap.js'
     };
     const jsMinimize = opts.js.minimize === true ? true : false;
+    const jsModule = opts.js.module || {};
 
     const jsContextRealDir = path.resolve(baseDir, jsContextDir);
     const jsOutputRealDir = path.resolve(baseDir, jsOutputDir);
@@ -52,6 +53,7 @@ module.exports = (opts) => {
         resolve: {
             modules: jsModules.map((item) => path.resolve(baseDir, item))
         },
+        module: jsModule,
     };
 
     if (opts.js.sourceMap) {
@@ -90,7 +92,7 @@ module.exports = (opts) => {
         console.log( // eslint-disable-line
             `[webpack:build ${jsOutputRealDir}]`,
             "\n",
-            stats.toString({ 
+            stats.toString({
                 chunks: false, // Makes the build much quieter
                 colors: true
             })

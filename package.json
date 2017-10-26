@@ -1,6 +1,6 @@
 {
   "name": "gap-node-front-builder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gap front builder",
   "main": "index.js",
   "scripts": {
