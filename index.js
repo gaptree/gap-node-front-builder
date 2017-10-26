@@ -35,7 +35,7 @@ module.exports = (opts) => {
         'gap': 'gap.js'
     };
     const jsMinimize = opts.js.minimize === true ? true : false;
-    const jsModule = opts.js.module || {};
+    const jsLoaders = opts.js.loaders || [];
 
     const jsContextRealDir = path.resolve(baseDir, jsContextDir);
     const jsOutputRealDir = path.resolve(baseDir, jsOutputDir);
@@ -53,7 +53,9 @@ module.exports = (opts) => {
         resolve: {
             modules: jsModules.map((item) => path.resolve(baseDir, item))
         },
-        module: jsModule,
+        module: {
+            loaders: jsLoaders
+        },
     };
 
     if (opts.js.sourceMap) {
